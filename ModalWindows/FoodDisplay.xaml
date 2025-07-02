@@ -1,0 +1,51 @@
+﻿<Window x:Class="Simple_Food_Delivery.ModalWindows.FoodDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simple_Food_Delivery.ModalWindows"
+        mc:Ignorable="d"
+        Title="FoodDisplay" Name="FoodDisplayWindow" MinHeight="600" MinWidth="600"
+        Height="600" Width="600"
+        WindowStyle="None" ResizeMode="NoResize" Closed="Window_Closed"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.7*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MaxB" Content="□" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"  Width="47" Visibility="Hidden"/>
+            <Button Style="{StaticResource TopButtons}" Name="MinB" Content="–" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Visibility="Hidden"/>
+        </StackPanel>
+
+        <Image Name="FoodImage" Margin="20,0,20,0" Grid.Row="1" Grid.RowSpan="2" Stretch="Uniform"/>
+
+        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Name="FirstRow"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="10,5,10,5" x:Name="Title" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Grid.Row="0"/>
+            <Line X1="250" VerticalAlignment="Bottom" Stroke="LightGray" StrokeThickness="2"/>
+            <TextBlock Margin="{Binding Margin, ElementName=Title}" x:Name="Description" Grid.Row="1" TextWrapping="Wrap"/>
+            <Button Margin="{Binding Margin, ElementName=Title}" x:Name="SelectB" Content="Добавить в корзину" Height="50" Grid.Row="2" VerticalAlignment="Center"
+             Click="SelectB_Click"/>
+        </Grid>
+    </Grid>
+</Window>

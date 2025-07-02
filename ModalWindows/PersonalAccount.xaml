@@ -1,0 +1,88 @@
+﻿<Window x:Class="Simple_Food_Delivery.ModalWindows.PersonalAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simple_Food_Delivery.ModalWindows"
+        mc:Ignorable="d"
+        Title="PersonalAccount" Name="PersonalAccountWindow" Height="600" Width="600"
+        MinHeight="600" MinWidth="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize"
+        Closed="Window_Closed"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".7*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MaxB" Content="□" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"  Width="47" Visibility="Hidden"/>
+            <Button Style="{StaticResource TopButtons}" Name="MinB" Content="–" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Visibility="Hidden"/>
+        </StackPanel>
+
+        <TextBlock Name="LoginTextBlock" Text="Логин" FontWeight="Bold" FontSize="20" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="LoginTB" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTextBlock}" Padding="1" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0"
+ VerticalContentAlignment="Center" TextChanged="LoginTB_TextChanged"/>
+        <TextBlock Text="Пароль" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Grid.Row="3" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <PasswordBox Name="PBox" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center" PasswordChanged="PBox_PasswordChanged"/>
+        <TextBlock Text="Телефон" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Grid.Row="5" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="PhoneNumber" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center" TextChanged="PhoneNumber_TextChanged"/>
+        <TextBlock Text="Почта" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Grid.Row="7" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="Email" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center" TextChanged="Email_TextChanged"/>
+        <TextBlock Text="Адрес" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Grid.Row="9" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="Address" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center" TextChanged="Address_TextChanged"/>
+
+        <Border Name="ForImage" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Purple" BorderThickness="2" CornerRadius="10"
+         Margin="41,2,41,2"  >
+            <Border.Background>
+                <ImageBrush x:Name="Avatar" ImageSource="..\Resources\defaultavatar.png" Stretch="UniformToFill"/>
+            </Border.Background>
+        </Border>
+        <Button Name="ChangeAvatarButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Загрузить фото"
+        VerticalAlignment="Top" Margin="35,10,35,0" Click="ChangeAvatarButton_Click"/>
+
+        <TextBlock Text="Имя" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=LoginTB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="NameTB" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" TextChanged="NameTB_TextChanged"/>
+        <TextBlock Text="Фамилия" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=LoginTB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="SurnameTB" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" TextChanged="SurnameNameTB_TextChanged"/>
+        <TextBlock Text="Отчество" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=LoginTB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="LastNameTB" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" FontSize="{Binding FontSize, ElementName=LoginTB}" Padding="{Binding Padding, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}" Height="{Binding Height, ElementName=LoginTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" TextChanged="LastNameTB_TextChanged"/>
+
+
+        <Button x:Name="ChangeInfoB" Content="Обновить данные" FontWeight="Bold" FontSize="15" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="{Binding Height, ElementName=LoginTB}" Width="{Binding Width, ElementName=LoginTB}"
+         Click="ChangeInfoB_Click" IsEnabled="False"/>
+    </Grid>
+</Window>

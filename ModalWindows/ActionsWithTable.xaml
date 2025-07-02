@@ -1,0 +1,83 @@
+﻿<Window x:Class="Simple_Food_Delivery.ModalWindows.ActionsWithTable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simple_Food_Delivery.ModalWindows"
+        mc:Ignorable="d"
+        Closed="Window_Closed"
+        ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="ActionsWithTable" Height="450" Width="950">
+    <Grid Name="Grid1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.Column="3" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+        </StackPanel>
+
+        <TextBlock Name="F1TB" Text="Логин" Grid.Row="1" Grid.Column="0" FontWeight="Bold" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="F1TBox" Grid.Row="2" Grid.Column="0" FontSize="20" Padding="1" Width="200" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="F2TB" Text="Пароль" Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="F2TBox" Grid.Row="2" Grid.Column="1" FontSize="20" Padding="1" Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="F3TB" Text="Email" Grid.Row="1" Grid.Column="2" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="F3TBox" Grid.Row="2" Grid.Column="2" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="F4TB" Text="Номер" Grid.Row="1" Grid.Column="3" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="F4TBox" Grid.Row="2" Grid.Column="3" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+
+        <TextBlock Name="S1TB" Text="Адрес" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="S1TBox" Grid.Row="4" Grid.Column="0" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="S2TB" Text="Имя" Grid.Row="3" Grid.Column="1" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="S2TBox" Grid.Row="4" Grid.Column="1" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="S3TB" Text="Фамилия" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="S3TBox" Grid.Row="4" Grid.Column="2" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="S4TB" Text="Отчество" Grid.Row="3" Grid.Column="3" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="S4TBox" Grid.Row="4" Grid.Column="3" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        
+        <TextBlock Name="T1TB" Text="Фото" Grid.Row="5" Grid.Column="0" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="T1TBox" Grid.Row="6" Grid.Column="0" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="T2TB" Text="Роль" Grid.Row="5" Grid.Column="1" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="T2TBox" Grid.Row="6" Grid.Column="1" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="T3TB" Text="Зарплата" Grid.Row="5" Grid.Column="2" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="T3TBox" Grid.Row="6" Grid.Column="2" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Name="T4TB" Text="Дата начала работы" Grid.Row="5" Grid.Column="3" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=F1TB}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="T4TBox" Grid.Row="6" Grid.Column="3" FontSize="20" Padding="1"  Width="{Binding Width, ElementName=F1TBox}" MinHeight="30" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+VerticalContentAlignment="Center" TextWrapping="Wrap"/>
+        
+        <Button Content="Сохранить" FontWeight="Bold" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="200"
+         Click="Save_Click"       />
+    </Grid>
+</Window>

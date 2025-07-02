@@ -1,0 +1,98 @@
+﻿<Page x:Class="Simple_Food_Delivery.Pages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Simple_Food_Delivery"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1000"
+      Title="OrdersForCourier"
+      Loaded="Page_Loaded">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MaxB" Content="□" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"  Width="47" Click="MaxB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MinB" Content="–" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Click="MinB_Click"/>
+        </StackPanel>
+
+        <Button Name="ActiveOrdersB" Margin="10" Grid.Row="1" Grid.Column="0" FontSize="20" FontWeight="Bold" Content="Активные"
+         Click="ActiveOrdersB_Click"       />
+        <Button Name="CompletedOrdersB" Margin="10" Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="Bold" Content="Завершенные"
+         Click="CompletedOrdersB_Click"       />
+
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Grid.RowSpan="10"  Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="LB" Grid.Row="2" Grid.RowSpan="10" Margin="10,20,10,0" Grid.ColumnSpan="2" Background="White" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <Border Background="WhiteSmoke" CornerRadius="10" Grid.ColumnSpan="2" Margin="5,10,5,0">
+                                <Grid Margin="40,0,0,10" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="750"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Name="OrderId" Text="{Binding Path=OrderId, StringFormat={}Заказ №{0}}" Margin="10,10,10,10" FontWeight="Bold" FontSize="20" 
+         Grid.Row="0" Grid.Column="0"          />
+                                    <TextBlock Text="Оплата при получении" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" 
+          Grid.Row="1" Grid.Column="0"          />
+                                    <TextBlock Text="{Binding Path=DeliveryDate, StringFormat={}Время доставки: {0}}" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" 
+          Grid.Row="2" Grid.Column="0"          />
+                                    <TextBlock Text="{Binding Path=UserAddress, StringFormat={}Адрес: {0}}" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" Width="auto"
+         Grid.Row="3" Grid.Column="0"           />
+
+                                    <TextBlock Name="Status" Text="{Binding Path=OrderStatus, StringFormat={}Статус: {0}}" Margin="{Binding Margin, ElementName=OrderId}" FontWeight="Bold" FontSize="15" 
+          Grid.Row="0" Grid.Column="1"          />
+                                    <TextBlock Text="{Binding Path=FinalPrice, StringFormat={}{0:0}₽}" Margin="{Binding Margin, ElementName=OrderId}" FontWeight="Bold" FontSize="20"
+          Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Center"        />
+                                    <Button Content="Посмотреть" Margin="0,20,20,0" Click="Button_Clicked"
+          Grid.Row="3" Grid.Column="1"       />
+                                </Grid>
+                            </Border>
+                        </Viewbox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

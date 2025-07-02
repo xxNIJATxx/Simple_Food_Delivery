@@ -1,0 +1,92 @@
+﻿<Page x:Class="Simple_Food_Delivery.Pages.CartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Simple_Food_Delivery.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1000"
+      Title="CartPage">
+
+    <Grid Margin="20,0,20,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        
+        <StackPanel Margin="0,0,-17,0" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MaxB" Content="□" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Click="MaxB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MinB" Content="–" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Click="MinB_Click"/>
+        </StackPanel>
+
+        <TextBlock Margin="20,0,0,0" Text="КОРЗИНА" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Grid.RowSpan="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="IC1" Grid.Row="2" Grid.RowSpan="2" Background="White">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Name="GR1" Grid.Row="2" Grid.Column="0" Margin="20,20,0,0" MinWidth="600">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Name="ProductImage" MinWidth="100" MinHeight="100" Stretch="UniformToFill"
+                              Source="{Binding Path = FoodImage}"     />
+                            <TextBlock Grid.Column="1" x:Name="Title" FontSize="20" FontWeight="Bold" Margin="10,0,10,0" MinWidth="100" TextWrapping="Wrap"
+                               Text="{Binding Path=ProductName}"        />
+                            <Button Grid.Column="2" Name="MinusB" FontSize="20" Style="{StaticResource TopButtons}" Margin="10,0,0,0" Content="-" VerticalAlignment="Top"
+                                    Click="MinusB_Click"/>
+                            <TextBlock Name="CountTB" Grid.Column="3" FontSize="{Binding FontSize, ElementName=MinusB}" Margin="{Binding Margin, ElementName=Title}" 
+                               Text="{Binding Path=CountOfProduct}"        />
+                            <Button Grid.Column="4" FontSize="{Binding FontSize, ElementName=MinusB}" Style="{StaticResource TopButtons}" Margin="0,0,10,0" Content="+" VerticalAlignment="Top" HorizontalContentAlignment="Left"
+                                    Click="Plus_Click"/>
+                            <TextBlock Grid.Column="5" MinWidth="260" TextAlignment="Right" FontSize="20"  HorizontalAlignment="Right" FontWeight="Bold" Margin="{Binding Margin, ElementName=Title}"
+                              Text="{Binding Path=FoodPrice, StringFormat={}{0:0}₽}"         />
+                            <Button Grid.Row="1" Grid.Column="5" Name="DelB" Content="🗑️" MinWidth="20" MinHeight="20" HorizontalAlignment="Right" Click="DelB_Click"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="FinalPrice" Margin="20,0,0,0" Text="Итого:" Grid.Row="2" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom"/>
+            <Button Name="MakeOrder" Margin="20" Content="Оформить заказ" FontSize="20" Grid.Row="3" VerticalAlignment="Bottom" Height="50"
+             Click="MakeOrder_Click"       />
+        </Grid>
+    </Grid>
+</Page>

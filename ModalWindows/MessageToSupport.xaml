@@ -1,0 +1,61 @@
+﻿<Window x:Class="Simple_Food_Delivery.ModalWindows.MessageToSupport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simple_Food_Delivery.ModalWindows"
+        mc:Ignorable="d"
+        Title="MessageToSupport" Name="MessageToSupportWindow" Height="500" Width="400"
+        MinHeight="500" MinWidth="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" 
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+            <Button Style="{StaticResource TopButtons}" Name="MaxB" Content="□" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"  Width="47" Visibility="Hidden"/>
+            <Button Style="{StaticResource TopButtons}" Name="MinB" Content="–" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Visibility="Hidden"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" Text="Напишите нам по любому вопросу. Мы оперативно решим ваш вопрос!" TextWrapping="Wrap"
+         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBlock Name="EmailTextBlock" Text="Электронная почта для связи" FontWeight="Bold" FontSize="15" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="EmailTB" Grid.Row="4" FontSize="{Binding FontSize, ElementName=EmailTextBlock}" Padding="3" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0"
+ VerticalContentAlignment="Center"/>
+        
+        <TextBlock Text="Ваше сообщение" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=EmailTB}" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <TextBox Name="MessageTB" Grid.Row="6" FontSize="{Binding FontSize, ElementName=EmailTB}" Padding="3" Width="{Binding Width, ElementName=EmailTB}" Height="{Binding Height, ElementName=EmailTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBlock Name="FileNameTB" Text="Файлы" FontWeight="Bold" FontSize="{Binding FontSize, ElementName=EmailTB}" Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <Button Name="DownloadImages" Content="📥Загрузить" Grid.Row="8" FontSize="{Binding FontSize, ElementName=EmailTB}" Padding="3" Width="{Binding Width, ElementName=EmailTB}" Height="{Binding Height, ElementName=EmailTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center" Background="White" Foreground="Black" BorderThickness="1"
+        Click="DownloadImages_Click"/>
+
+        <Button Name="SendMessageB" Content="Отправить" Grid.Row="9" FontSize="{Binding FontSize, ElementName=EmailTB}" Padding="3" Width="{Binding Width, ElementName=EmailTB}" Height="{Binding Height, ElementName=EmailTB}" VerticalAlignment="Top" Margin="0,5,0,0"
+VerticalContentAlignment="Center" HorizontalAlignment="Center" BorderThickness="1"
+        Click="SendMessageB_Click"/>
+    </Grid>
+</Window>

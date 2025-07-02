@@ -1,0 +1,165 @@
+﻿<Page x:Class="Simple_Food_Delivery.Pages.OrderDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Simple_Food_Delivery.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1000"
+      Title="OrderDetails"
+      Loaded="Page_Loaded">
+
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Name="LastRow" Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Button Style="{StaticResource TopButtons}" Name="CloseB" Content="X" FontSize="15" FontWeight="Bold" Width="47" Click="CloseB_Click"/>
+                <Button Style="{StaticResource TopButtons}" Name="MaxB" Content="□" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"  Width="47" Click="MaxB_Click"/>
+                <Button Style="{StaticResource TopButtons}" Name="MinB" Content="–" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Width="47" Click="MinB_Click"/>
+            </StackPanel>
+
+
+            <ItemsControl Name="IC1" Grid.Row="1" Grid.RowSpan="3" Margin="30,20,50,0" Grid.ColumnSpan="2" Background="White">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <Border Background="WhiteSmoke" CornerRadius="10" Grid.ColumnSpan="2">
+                                <Grid Margin="40,0,0,0" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="750"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Name="OrderId" Text="{Binding Path=OrderId, StringFormat={}Заказ №{0}}" Margin="10,10,10,10" FontWeight="Bold" FontSize="30" 
+ Grid.Row="0" Grid.Column="0"          />
+                                    <TextBlock Name="Names" Text="Имя Фамилия" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" 
+Grid.Row="1" Grid.Column="0"  FontWeight="Bold"/>
+                                    <TextBlock Name="EmailAndPhone" Text="Тел Почта" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" 
+Grid.Row="2" Grid.Column="0"/>
+                                    <TextBlock Text="Оплата при получении" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" 
+  Grid.Row="3" Grid.Column="0"          />
+                                    <TextBlock Text="{Binding Path=DeliveryDate, StringFormat={}Время доставки: {0}}" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" 
+  Grid.Row="4" Grid.Column="0"          />
+                                    <TextBlock Text="{Binding Path=UserAddress, StringFormat={}Адрес: {0}}" Margin="{Binding Margin, ElementName=OrderId}"  FontSize="15" Width="auto"
+ Grid.Row="5" Grid.Column="0"           />
+
+                                    <TextBlock Name="StatusTB" Text="{Binding Path=OrderStatus, StringFormat={}Статус: {0}}" Margin="{Binding Margin, ElementName=OrderId}" FontWeight="Bold" FontSize="20" 
+  Grid.Row="0" Grid.Column="1"          />
+                                    <TextBlock Name="AllPrice" Text="{Binding Path=FinalPrice, StringFormat={}Общая сумма: {0:0}₽}" Margin="{Binding Margin, ElementName=OrderId}" FontSize="20" 
+    Grid.Row="3" Grid.Column="1"          />
+                                    <TextBlock Text="Доставка:  Бесплатно" Margin="{Binding Margin, ElementName=OrderId}" FontSize="20" 
+    Grid.Row="4" Grid.Column="1"          />
+                                    <TextBlock Text="{Binding Path=FinalPrice, StringFormat={}Итого: {0:0}₽}" Margin="{Binding Margin, ElementName=OrderId}" FontSize="20" FontWeight="Bold"
+    Grid.Row="5" Grid.Column="1"          />
+                                </Grid>
+                            </Border>
+                        </Viewbox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Text="СОСТАВ ЗАКАЗА" Grid.Row="4" FontWeight="Bold" FontSize="25" VerticalAlignment="Bottom"
+         Margin="60,0,0,10"/>
+
+        <ScrollViewer Name="LowSV" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <ItemsControl x:Name="IC2" Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="White" Margin="30,20,40,20">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Viewbox>
+                            <Grid Name="GR1" Grid.Row="2" Grid.Column="0" Margin="20,20,20,0" MinWidth="600">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="285"/>
+                                    <ColumnDefinition Width="300"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Name="ProductImage" Height="100" Width="100" Stretch="UniformToFill"
+       Source="{Binding Path=OrdersCompositions.Image}"/>
+                                <TextBlock Grid.Column="1" x:Name="Title" FontSize="20" FontWeight="Bold" Margin="10,0,10,0" MinWidth="100" TextWrapping="Wrap"
+        Text="{Binding Path=Product}"        />
+                                <TextBlock Name="CountTB" Grid.Column="2" FontSize="{Binding FontSize, ElementName=MinusB}" Margin="{Binding Margin, ElementName=Title}" 
+        Text="{Binding Path=CountOfProduct, StringFormat={}{0}шт}" FontWeight="Bold" HorizontalAlignment="Right"      />
+                                <TextBlock Name="FoodPrice" Grid.Column="3" MinWidth="260" TextAlignment="Right" FontSize="20"  HorizontalAlignment="Right" FontWeight="Bold" Margin="{Binding Margin, ElementName=Title}"
+                 />
+                            </Grid>
+                        </Viewbox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Grid Name="LowGrid" Grid.Row="7" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text=" Действия" Margin="0,10,0,0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Grid.ColumnSpan="11"/>
+                <Button Name="OtmenaB" Content="X" Grid.Row="1" Grid.Column="4" Foreground="White" Background="Red" Style="{StaticResource UnderTopButtons}"
+                        Click="OtmenaB_Click"/>
+                <Button Name="CallB"  Content="📞" Grid.Row="1" Grid.Column="5" Foreground="White" Background="Blue" Style="{StaticResource UnderTopButtons}"
+                        Click="CallB_Click"/>
+                <Button Name="MessageToSupportB" Content="💬" Grid.Row="1" Grid.Column="6" Foreground="White" Background="Orange" Style="{StaticResource UnderTopButtons}"
+                        Click="MessageToSupportB_Click"/>
+                <Button Name="AcceptB" Content="✅" Grid.Row="1" Grid.Column="7" Foreground="White" Background="Green" Style="{StaticResource UnderTopButtons}"
+                 Visibility="Hidden" Click="AcceptB_Click"/>
+            </Grid>
+        </Grid>
+</Page>
